@@ -397,15 +397,13 @@ static int solveZipRec(int board[ZIP_MAX_GRID_SIZE][ZIP_MAX_GRID_SIZE],
     int size, int r, int c, int step,
     int nextNum, int highest)
 {
-    if (step == size * size)
-    {
-        if (nextNum == highest + 1)
-        {
-            solution[r][c] = 'X';
-            return 1;
-        }
-        return 0;
-    }
+   if (step == size * size) {
+       if (nextNum == highest + 1 && board[r][c] == highest) {
+           solution[r][c] = 'X';
+           return 1;
+       }
+       return 0;
+   }
 
     if (tryDirections(0, board, solution, visited, size,
         r, c, step, nextNum, highest))
